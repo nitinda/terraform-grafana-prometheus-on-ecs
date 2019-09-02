@@ -1,0 +1,52 @@
+[
+    {
+        "image": "${grafana_image_url}",
+        "name": "terraform-demo-container-definition-grafana",
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${grafana_log_group_name}",
+                "awslogs-region": "${grafana_log_group_region}",
+                "awslogs-stream-prefix": "terraform-demo-grafana"
+            }
+        },
+        "environment": [
+            {
+                "Name": "GF_DATABASE_TYPE",
+                "Value": "${GF_DATABASE_TYPE}"
+            },
+            {
+                "Name": "GF_DATABASE_HOST",
+                "Value": "${GF_DATABASE_HOST}"
+            },
+            {
+                "Name": "GF_DATABASE_NAME",
+                "Value": "${GF_DATABASE_NAME}"
+            },
+            {
+                "Name": "GF_DATABASE_USER",
+                "Value": "${GF_DATABASE_USER}"
+            },
+            {
+                "Name": "GF_DATABASE_PASSWORD",
+                "Value": "${GF_DATABASE_PASSWORD}"
+            },
+            {
+                "Name": "GF_SECURITY_ADMIN_PASSWORD",
+                "Value": "${GF_SECURITY_ADMIN_PASSWORD}"
+            },
+            {
+                "Name": "GF_INSTALL_PLUGINS",
+                "Value": "grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel"
+            }
+        ],
+        "essential": true,
+        "portMappings": [
+            {
+                "hostPort": 3000,
+                "containerPort": 3000,
+                "protocol": "tcp"
+            }
+        ]
+    }
+]

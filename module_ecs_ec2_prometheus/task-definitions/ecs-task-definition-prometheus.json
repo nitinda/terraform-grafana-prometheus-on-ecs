@@ -1,0 +1,52 @@
+[
+    {
+        "name": "terraform-demo-container-definition-prometheus",
+        "image": "nitindas/prometheus-custom:latest",
+        "memory": 256,
+        "cpu": 256,
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${prometheus_log_group_name}",
+                "awslogs-region": "${prometheus_log_group_region}",
+                "awslogs-stream-prefix": "terraform-demo-prometheus"
+            }
+        },
+        "portMappings": [
+          {
+            "hostPort": 9090,
+            "containerPort": 9090,
+            "protocol": "tcp"
+          }
+        ]
+    },
+    {
+        "name": "terraform-demo-container-definition-prometheus-exporter",
+        "image": "nitindas/aws-api-prometheus-exporter:latest",
+        "memory": 256,
+        "cpu": 256,
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 9000,
+            "containerPort": 9000,
+            "protocol": "tcp"
+          }
+        ],
+        "environment": [
+            {
+                "Name": "APPPORT",
+                "Value": "9000"
+            },
+            {
+                "Name": "PERIOD_SECONDS",
+                "Value": "86400"
+            },
+            {
+                "Name": "AWS_DEFAULT_REGION",
+                "Value": "eu-central-1"
+            }
+        ]
+    }
+]
