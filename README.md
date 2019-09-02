@@ -16,6 +16,8 @@ Deloying Grafan container service, on AWS ECS with high availability. Amazon Aur
 9. Amazon Aurora Serverless ( for high availibilty )
 10. Application Load balancer (Internet Facing) for Grafana service.
 11. Application Load balancer (Internal) for Prometheus Server.
+12. KMS Key
+13. Parameter Store for store Database / Grafana Admin password
 
 ----
 
