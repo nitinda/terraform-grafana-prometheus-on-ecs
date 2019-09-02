@@ -65,9 +65,9 @@ make apply
 
 ## Other Information
 
-Custom Docker Images - 
-https://github.com/nitinda/docker_prometheus_custom
-https://github.com/nitinda/docker_aws_api_prometheus_exporter
+Custom Docker Images
+- https://github.com/nitinda/docker_prometheus_custom
+- https://github.com/nitinda/docker_aws_api_prometheus_exporter
 
 
 
