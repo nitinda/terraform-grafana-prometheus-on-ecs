@@ -12,7 +12,7 @@ Deloying Grafan container service, on AWS ECS with high availability. Amazon Aur
 5. IAM roles, instance profiles and policies
 6. Amazon EC2 Container Service ( On EC2 )
 7. Grafana container service on ECS.
-8. 
+8. Prometheus custom container to gather EC2 information and Cost Explorer api (every 24 hours)
 9. Amazon Aurora Serverless ( for high availibilty )
 
 ----
