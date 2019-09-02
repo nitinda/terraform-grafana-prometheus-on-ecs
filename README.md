@@ -1,6 +1,14 @@
 # Grafana on AWS ECS with Amazon Aurora Serverless database for persistent storage.
 
-Deloying Grafan container service, on AWS ECS with high availability. Amazon Aurora Serverless database for storing dashboard, users, and other persistent data.
+Deploying Grafana container service, on AWS ECS with high availability. Amazon Aurora Serverless database for storing dashboard, users, and other persistent data.
+
+Deploying Prometheus Sever and Custom AWS Prometheus Expoter to export AWS API to Prometheus metrics.
+This Python module allows you to run AWS API calls through Boto3, and expose the results of those calls as Prometheus metrics. Metrics must be described in YAML. 
+
+Focsing on follwoing api.
+- EC2 Information [ This to visualize AWS services running in an AWS account, using Grafana ]
+- AWS Cost Explorer API [ This to visualize AWS services running in an AWS account, using Grafana ]
+
 
 
 ## What resources are created
@@ -54,6 +62,14 @@ make apply
 
 
 ----
+
+## Other Information
+
+Custom Docker Images - 
+https://github.com/nitinda/docker_prometheus_custom
+https://github.com/nitinda/docker_aws_api_prometheus_exporter
+
+
 
 ## Cleaning up
 
