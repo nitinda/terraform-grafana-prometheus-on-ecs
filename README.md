@@ -63,6 +63,13 @@ make apply
 
 ----
 
+## Data Flow Diagram
+![Data Flow Diagram](./images/AWS-ECS-Grafana-Prometheus-DataFlow-Daigram.png)
+
+
+----
+
+
 ## Other Information
 
 Custom Docker Images
