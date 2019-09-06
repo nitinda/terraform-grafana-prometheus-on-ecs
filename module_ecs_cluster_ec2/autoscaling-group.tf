@@ -37,12 +37,7 @@ resource "aws_autoscaling_group" "demo_ecs_autoscaling_group" {
                 launch_template_id = "${aws_launch_template.demo_launch_template_ecs_worker_node.id}"
                 version            = "$$Latest"
             }
-            override {
-                instance_type = "t3.xlarge"
-            }
-            override {
-                instance_type = "t3.2xlarge"
-            }
+            override = ["${local.instance_types}"]
         }
         instances_distribution {
             on_demand_percentage_above_base_capacity = 0

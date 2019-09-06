@@ -32,3 +32,9 @@ variable "new_aws_account_ids" {
     Account-1 = "760341739473"
   }
 }
+
+variable "override_instance_types" {
+  description = "The size of instance to launch, minimum 2 types must be specified."
+  type        = "list"
+  default     = ["t3.xlarge", "t3.large"]
+}

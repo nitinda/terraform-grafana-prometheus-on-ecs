@@ -30,3 +30,13 @@ variable common_tags {
 variable "ecs_instance_profile_name" {
   description = "description"
 }
+
+
+locals {
+  instance_types  = ["${data.null_data_source.null_resource_override_instance_types.*.outputs}"]
+}
+
+variable "override_instance_types" {
+  description = "The size of instance to launch, minimum 2 types must be specified."
+  type        = "list"
+}

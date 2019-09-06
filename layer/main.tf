@@ -146,6 +146,7 @@ module "aws_resources_module_ecs_cluster_ec2" {
   public_subnet_ids         = "${module.aws_resources_module_network.public_subnet_ids}"
   public_subnet_cidr_blocks = "${module.aws_resources_module_network.public_subnet_cidr_blocks}"
   ecs_instance_profile_name = "${module.aws_resources_module_iam_ecs.ecs_instance_profile_name}"
+  override_instance_types   = "${var.override_instance_types}"
 }
 
 
