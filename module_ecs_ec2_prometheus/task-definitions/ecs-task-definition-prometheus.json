@@ -1,7 +1,7 @@
 [
     {
         "name": "terraform-demo-container-definition-prometheus",
-        "image": "nitindas/prometheus-custom:latest",
+        "image": "${prometheus_image_url}",
         "memory": 256,
         "cpu": 256,
         "essential": true,
@@ -10,13 +10,13 @@
             "options": {
                 "awslogs-group": "${prometheus_log_group_name}",
                 "awslogs-region": "${prometheus_log_group_region}",
-                "awslogs-stream-prefix": "terraform-demo-prometheus"
+                "awslogs-stream-prefix": "${prometheus_log_group_stream_prefix}"
             }
         },
         "portMappings": [
           {
-            "hostPort": 9090,
-            "containerPort": 9090,
+            "hostPort": ${prometheus_container_host_port},
+            "containerPort": ${prometheus_container_container_port},
             "protocol": "tcp"
           }
         ]

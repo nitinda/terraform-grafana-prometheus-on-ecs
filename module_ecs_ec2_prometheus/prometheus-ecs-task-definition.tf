@@ -7,4 +7,7 @@ resource "aws_ecs_task_definition" "demo_ecs_task_definition_prometheus" {
   # task_role_arn            = "${var.ecs_task_role_arn}"
   execution_role_arn       = "${var.ecs_task_execution_role_arn}"
   network_mode             = "awsvpc"
+  tags = "${merge(var.common_tags, map(
+    "Name", "terraform-demo-task-definition-prometheus",
+  ))}"
 }

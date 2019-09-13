@@ -19,6 +19,22 @@ variable "prometheus_image_url" {
   description = "the image url for the prometheus image"
 }
 
+variable "prometheus_log_group_stream_prefix" {
+  description = "description"
+}
+
+variable "prometheus_container_name" {
+  description = "description"
+}
+
+variable "prometheus_container_container_port" {
+  description = "description"
+}
+
+variable "prometheus_container_host_port" {
+  description = "description"
+}
+
 
 ####
 

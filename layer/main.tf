@@ -206,12 +206,15 @@ module "aws_resources_module_ecs_ec2_prometheus" {
     "aws"  = "aws.aws_services"
   }
 
-  common_tags                 = "${var.common_tags}"
-  vpc_id                      = "${module.aws_resources_module_network.vpc_id}"
-  public_subnet_ids           = "${module.aws_resources_module_network.public_subnet_ids}"
-  web_subnet_ids              = "${module.aws_resources_module_network.web_subnet_ids}"
-  ecs_cluster_name            = "${module.aws_resources_module_ecs_cluster_ec2.ecs_cluster_name}"
-  ecs_task_execution_role_arn = "${module.aws_resources_module_iam_ecs.ecs_task_execution_role_arn}"
-  ecs_task_role_arn           = "${module.aws_resources_module_iam_ecs.ecs_task_role_arn}"
-  prometheus_image_url        = "nitindas/prometheus-custom:latest"
+  common_tags                         = "${var.common_tags}"
+  vpc_id                              = "${module.aws_resources_module_network.vpc_id}"
+  public_subnet_ids                   = "${module.aws_resources_module_network.public_subnet_ids}"
+  web_subnet_ids                      = "${module.aws_resources_module_network.web_subnet_ids}"
+  ecs_cluster_name                    = "${module.aws_resources_module_ecs_cluster_ec2.ecs_cluster_name}"
+  ecs_task_execution_role_arn         = "${module.aws_resources_module_iam_ecs.ecs_task_execution_role_arn}"
+  ecs_task_role_arn                   = "${module.aws_resources_module_iam_ecs.ecs_task_role_arn}"
+  prometheus_image_url                = "nitindas/prometheus-custom:latest"
+  prometheus_log_group_stream_prefix  = "terraform-demo-prometheus"
+  prometheus_container_name           = 9090
+  prometheus_container_container_port = 9090
 }
