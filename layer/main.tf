@@ -120,9 +120,9 @@ module "aws_resources_module_rds_aurora_serverless_grafana" {
   }
 
   common_tags     = "${var.common_tags}"
-  vpc_id          = "${module.aws_resources_module_network.vpc_id}"
-  db_subnet_ids   = "${module.aws_resources_module_network.db_subnet_ids}"
-  web_subnet_cidr = "${module.aws_resources_module_network.web_subnet_cidr_blocks}"
+  vpc_id          = "${module.network.vpc_id}"
+  db_subnet_ids   = "${module.network.db_subnet_ids}"
+  web_subnet_cidr = "${module.network.web_subnet_cidr_blocks}"
 
   db_instance_type                   = "db.t2.small"
   cluster_instance_identifier_name   = "terraform-demo-db-cluster-instance-identifier-grafana"
@@ -150,10 +150,10 @@ module "aws_resources_module_ecs_cluster_ec2" {
 
   common_tags               = "${var.common_tags}"
   ecs_cluster_name          = "${var.ecs_cluster_name}"
-  vpc_id                    = "${module.aws_resources_module_network.vpc_id}"
-  web_subnet_ids            = "${module.aws_resources_module_network.web_subnet_ids}"
-  public_subnet_ids         = "${module.aws_resources_module_network.public_subnet_ids}"
-  public_subnet_cidr_blocks = "${module.aws_resources_module_network.public_subnet_cidr_blocks}"
+  vpc_id                    = "${module.network.vpc_id}"
+  web_subnet_ids            = "${module.network.web_subnet_ids}"
+  public_subnet_ids         = "${module.network.public_subnet_ids}"
+  public_subnet_cidr_blocks = "${module.network.public_subnet_cidr_blocks}"
   ecs_instance_profile_name = "${module.aws_resources_module_iam_ecs.ecs_instance_profile_name}"
   override_instance_types   = "${var.override_instance_types}"
 }
@@ -189,9 +189,9 @@ module "aws_resources_module_ecs_ec2_grafana_rds" {
   }
 
   common_tags                 = "${var.common_tags}"
-  vpc_id                      = "${module.aws_resources_module_network.vpc_id}"
-  public_subnet_ids           = "${module.aws_resources_module_network.public_subnet_ids}"
-  web_subnet_ids              = "${module.aws_resources_module_network.web_subnet_ids}"
+  vpc_id                      = "${module.network.vpc_id}"
+  public_subnet_ids           = "${module.network.public_subnet_ids}"
+  web_subnet_ids              = "${module.network.web_subnet_ids}"
   ecs_cluster_name            = "${module.aws_resources_module_ecs_cluster_ec2.ecs_cluster_name}"
   ecs_task_execution_role_arn = "${module.aws_resources_module_iam_ecs.ecs_task_execution_role_arn}"
   ecs_task_role_arn           = "${module.aws_resources_module_iam_ecs.ecs_task_role_arn}"
@@ -216,9 +216,9 @@ module "aws_resources_module_ecs_ec2_prometheus" {
   }
 
   common_tags                         = "${var.common_tags}"
-  vpc_id                              = "${module.aws_resources_module_network.vpc_id}"
-  public_subnet_ids                   = "${module.aws_resources_module_network.public_subnet_ids}"
-  web_subnet_ids                      = "${module.aws_resources_module_network.web_subnet_ids}"
+  vpc_id                              = "${module.network.vpc_id}"
+  public_subnet_ids                   = "${module.network.public_subnet_ids}"
+  web_subnet_ids                      = "${module.network.web_subnet_ids}"
   ecs_cluster_name                    = "${module.aws_resources_module_ecs_cluster_ec2.ecs_cluster_name}"
   ecs_task_execution_role_arn         = "${module.aws_resources_module_iam_ecs.ecs_task_execution_role_arn}"
   ecs_task_role_arn                   = "${module.aws_resources_module_iam_ecs.ecs_task_role_arn}"
