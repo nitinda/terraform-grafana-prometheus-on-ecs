@@ -23,7 +23,7 @@
     },
     {
         "name": "terraform-demo-container-definition-prometheus-exporter",
-        "image": "nitindas/aws-api-prometheus-exporter:latest",
+        "image": "nitindas/aws-api-prometheus-exporter:20",
         "memory": 256,
         "cpu": 256,
         "essential": true,
@@ -41,7 +41,7 @@
             },
             {
                 "Name": "PERIOD_SECONDS",
-                "Value": "86400"
+                "Value": "900"
             },
             {
                 "Name": "AWS_DEFAULT_REGION",

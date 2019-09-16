@@ -89,13 +89,22 @@ module "aws_resources_module_ssm_parameters_grafana_password" {
 
 ########################## Network
 
-module "aws_resources_module_network" {
-  source  = "../module_network"
+module "network" {
+  source               = "git::https://github.com/nitinda/terraform_aws_module_network.git?ref=master"
 
   providers = {
     "aws"  = "aws.aws_services"
   }
 
+  cidr_block           = "10.20.0.0/16"
+  enable_dns_hostnames = true
+  # Subnet
+  public_subnets_cidr  = ["10.20.1.0/24", "10.20.2.0/24"]
+  private_subnets_cidr = ["10.20.3.0/24", "10.20.4.0/24"]
+  db_subnets_cidr      = ["10.20.5.0/24", "10.20.6.0/24"]
+  availability_zones   = ["eu-central-1a", "eu-central-1b"]
+
+  # Tags
   common_tags = "${var.common_tags}"
 }
 
