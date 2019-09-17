@@ -31,6 +31,10 @@ resource "aws_launch_template" "demo_launch_template_ecs_worker_node" {
     ))}"
   }
   user_data = "${base64encode("${data.template_file.demo_template_data.rendered}")}"
+
+  tags = "${merge(var.common_tags, map(
+    "Name", "terraform-demo-launch-template-ecs-worker-node",
+  ))}"
 }
 
 data "template_file" "demo_template_data" {

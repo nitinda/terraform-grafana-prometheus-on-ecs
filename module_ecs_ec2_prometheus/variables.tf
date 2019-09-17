@@ -22,7 +22,6 @@ variable "prometheus_image_url" {
 variable "prometheus_log_group_stream_prefix" {
   description = "description"
 }
-
 variable "prometheus_container_name" {
   description = "description"
 }
@@ -34,6 +33,15 @@ variable "prometheus_container_container_port" {
 variable "prometheus_container_host_port" {
   description = "description"
 }
+
+variable "prometheus_source_volume_name" {
+  description = "description"
+}
+
+variable "prometheus_assume_role_arn" {
+  description = "description"
+}
+
 
 
 ####

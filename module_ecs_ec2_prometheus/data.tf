@@ -11,5 +11,7 @@ data "template_file" "demo_template_file_ecs_task_definition_prometheus" {
     prometheus_container_name           = "${var.prometheus_container_name}"
     prometheus_container_container_port = "${var.prometheus_container_container_port}"
     prometheus_container_host_port      = "${var.prometheus_container_host_port}"
+    prometheus_source_volume_name       = "${var.prometheus_source_volume_name}"
+    prometheus_assume_role_arn          = "arn:aws:iam::735276988266:role/service-role/terraform-demo-iam-role-prometheus-assume"
   }
 }

@@ -13,8 +13,8 @@ resource "aws_ecs_service" "demo_ecs_service_prometheus" {
 
   load_balancer {
     target_group_arn = "${aws_alb_target_group.demo_alb_target_group_ip_ecs_prometheus.arn}"
-    container_name   = "terraform-demo-container-definition-prometheus"
-    container_port   = 9090
+    container_name   = "${var.prometheus_container_name}"
+    container_port   = "${var.prometheus_container_container_port}"
   }
 
   # lifecycle {
@@ -28,6 +28,7 @@ resource "aws_ecs_service" "demo_ecs_service_prometheus" {
   placement_constraints {
     type       = "memberOf"
     expression = "attribute:ecs.availability-zone in [eu-central-1a, eu-central-1b]"
+    # expression = "attribute:ecs.availability-zone in [eu-central-1b]"
   }
 
   ordered_placement_strategy {

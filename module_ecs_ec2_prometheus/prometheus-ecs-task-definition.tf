@@ -7,7 +7,29 @@ resource "aws_ecs_task_definition" "demo_ecs_task_definition_prometheus" {
   # task_role_arn            = "${var.ecs_task_role_arn}"
   execution_role_arn       = "${var.ecs_task_execution_role_arn}"
   network_mode             = "awsvpc"
-  tags = "${merge(var.common_tags, map(
-    "Name", "terraform-demo-task-definition-prometheus",
-  ))}"
+  volume {
+    name = "${var.prometheus_source_volume_name}"
+    docker_volume_configuration {
+      scope         = "shared"
+      autoprovision = false
+        # driver = "cloudstor-ebs:aws"
+        # driver_opts {
+        #   size        = 50,
+        #   volumetype  = "gp2"
+        #   relocatable = "backing"
+        # }
+        # labels {
+        #   Project      = "${replace(var.common_tags["Project"], " ", "-")}"
+        #   Owner        = "${replace(var.common_tags["Owner"], " ", "-")}"
+        #   Environment  = "${replace(var.common_tags["Environment"], " ", "-")}"
+        #   BusinessUnit = "${replace(var.common_tags["BusinessUnit"], " ", "-")}"
+        # }
+        driver = "rexray-aws-ebs"
+        driver_opts {
+          size       = 50,
+          volumetype = "gp2"
+        }
+
+    }
+  }
 }

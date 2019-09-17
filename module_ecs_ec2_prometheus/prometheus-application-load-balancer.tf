@@ -11,7 +11,7 @@ resource "aws_alb" "demo_alb_ecs_prometheus" {
 
 resource "aws_alb_target_group" "demo_alb_target_group_ip_ecs_prometheus" {
     name                 = "prometheus-tg"
-    port                 = "9090"
+    port                 = "${var.prometheus_container_host_port}"
     protocol             = "HTTP"
     vpc_id               = "${var.vpc_id}"
     deregistration_delay = 5

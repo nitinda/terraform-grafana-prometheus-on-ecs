@@ -1,10 +1,23 @@
 [
     {
-        "name": "terraform-demo-container-definition-prometheus",
+        "name": "${prometheus_container_name}",
         "image": "${prometheus_image_url}",
         "memory": 256,
         "cpu": 256,
         "essential": true,
+        "portMappings": [
+          {
+            "hostPort": ${prometheus_container_container_port},
+            "containerPort": ${prometheus_container_host_port},
+            "protocol": "tcp"
+          }
+        ],
+        "mountPoints": [
+            {
+                "containerPath": "/prometheus",
+                "sourceVolume": "${prometheus_source_volume_name}"
+            }
+        ],
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
@@ -12,41 +25,6 @@
                 "awslogs-region": "${prometheus_log_group_region}",
                 "awslogs-stream-prefix": "${prometheus_log_group_stream_prefix}"
             }
-        },
-        "portMappings": [
-          {
-            "hostPort": ${prometheus_container_host_port},
-            "containerPort": ${prometheus_container_container_port},
-            "protocol": "tcp"
-          }
-        ]
-    },
-    {
-        "name": "terraform-demo-container-definition-prometheus-exporter",
-        "image": "nitindas/aws-api-prometheus-exporter:20",
-        "memory": 256,
-        "cpu": 256,
-        "essential": true,
-        "portMappings": [
-          {
-            "hostPort": 9000,
-            "containerPort": 9000,
-            "protocol": "tcp"
-          }
-        ],
-        "environment": [
-            {
-                "Name": "APPPORT",
-                "Value": "9000"
-            },
-            {
-                "Name": "PERIOD_SECONDS",
-                "Value": "900"
-            },
-            {
-                "Name": "AWS_DEFAULT_REGION",
-                "Value": "eu-central-1"
-            }
-        ]
+        }
     }
 ]
